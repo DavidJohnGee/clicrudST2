@@ -11,17 +11,25 @@ class OPSCommand(Action):
         self.username = self.config['username']
         self.password = self.config['password']
         self.enable = self.config['enable']
+
+        self.method = self.method.encode('utf-8', 'ignore')
+        self.username = self.username.encode('utf-8', 'ignore')
+        self.password = self.password.encode('utf-8', 'ignore')
+        self.enable = self.enable.encode('utf-8', 'ignore')
+
+        utf8_command = command.encode('utf-8', 'ignore')
+        utf8_host = host.encode('utf-8', 'ignore')
+
         try:
-            utf8_command = command.encode('utf-8')
-            utf8_host = host.encode('utf-8')
+
             transport = generic(host=utf8_host, username=self.username,
                                 enable=self.enable, method=self.method,
                                 password=self.password)
 
             return_value = transport.read(utf8_command, return_type="string")
-            _return_value = unicode(return_value)
+            return_value = unicode(return_value, "utf-8")
             transport.close()
-            return _return_value
+            return return_value
         except Exception, err:
             self.logger.info('FUBARd')
             self.logger.info(err)
