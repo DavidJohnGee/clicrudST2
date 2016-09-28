@@ -32,7 +32,7 @@ If you are not familiar with CLICRUD, check out http://github.com/davidjohngee/c
 pip install clicrud
 ```
 
-This dependency will automatically be installed on ST2/BWC so don't worry about that!
+This dependency will automatically be installed on ST2/BWC so don't worry about that! You do not have to install this to get the clicrudST2 integration working.
 
 ####Installing
 
@@ -60,6 +60,7 @@ This file hides the connectivity method and credentials from the actual composer
 
 Currently the connectivity method is also in the configuration file. This in the future may change. Everyone uses SSH right? (Just nod).
 
+Last step for this part, copy this configuration file to the ```bash/config``` directory within ```bash/opt/stackstorm```
 
 ```python
   ---
