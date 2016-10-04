@@ -34,7 +34,7 @@ class ConfigCommand(Action):
             _return_value = str(return_value).encode('utf-8', 'ignore')
 
             if save is True:
-                _dump = transport.configure(["write mem"])
+                transport.configure(["write mem"])
 
             transport.close()
             return _return_value
